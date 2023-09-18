@@ -68,15 +68,22 @@ public class CourseService : ICourseService
 
     public async Task<Response<List<CourseDto>>> GetAllByUserIdAsync(string id)
     {
-        var course = await _courseCollection.Find(course => course.UserId == id)
-                                               .FirstOrDefaultAsync();
-        if (course == null)
+        var courses = await _courseCollection.Find(course => course.UserId == id)
+                                               .ToListAsync();
+        if (courses.Any())
         {
-            return new Response<List<CourseDto>>();
+            foreach (var course in courses)
+            {
+                course.Category = await _categoryCollection.Find(c => c.Id == course.CategoryId).FirstAsync();
+            }
+        }
+        else
+        {
+            courses = new List<Course>();
         }
 
-        course.Category = await _categoryCollection.Find(c => c.Id == course.CategoryId).FirstAsync();
-        return Response<List<CourseDto>>.Success(data: _mapper.Map<List<CourseDto>>(course),
+        var courseMapped = _mapper.Map<List<CourseDto>>(courses);
+        return Response<List<CourseDto>>.Success(data: courseMapped,
                                              statusCode: 200);
     }
 
@@ -97,13 +104,14 @@ public class CourseService : ICourseService
                                              statusCode: 200);
     }
 
-    public async void UpdateAsync(CourseUpdateDto courseUpdateDto)
+    public async Task<Response<NoContent>> UpdateAsync(CourseUpdateDto courseUpdateDto)
     {
         var updatedCourse = _mapper.Map<Course>(courseUpdateDto);
 
         try
         {
             await _courseCollection.FindOneAndReplaceAsync(c => c.Id == courseUpdateDto.Id, updatedCourse);
+            return new Response<NoContent>();
         }
         catch (System.Exception)
         {
@@ -111,11 +119,12 @@ public class CourseService : ICourseService
         }
     }
 
-    public async void DeleteAsync(string id)
+    public async Task<Response<NoContent>> DeleteAsync(string id)
     {
         try
         {
             await _courseCollection.DeleteOneAsync(c => c.Id == id);
+            return new Response<NoContent>();
         }
         catch (System.Exception)
         {
