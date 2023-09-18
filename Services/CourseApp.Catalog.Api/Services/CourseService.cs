@@ -1,0 +1,125 @@
+using AutoMapper;
+using CourseApp.Catalog.Api.Config;
+using CourseApp.Catalog.Api.Dtos.Course;
+using CourseApp.Catalog.Api.Models;
+using CourseApp.Shared.Dtos;
+using MongoDB.Driver;
+
+namespace CourseApp.Catalog.Api.Services;
+
+public class CourseService : ICourseService
+{
+    private readonly IMongoCollection<Course> _courseCollection;
+    private readonly IMongoCollection<Category> _categoryCollection;
+    private readonly IMapper _mapper;
+
+    public CourseService(IMapper mapper, IDatabaseSettings databaseSettings)
+    {
+        var client = new MongoClient(databaseSettings.ConnectionString);
+        var database = client.GetDatabase(databaseSettings.DatabaseName);
+
+        _courseCollection = database.GetCollection<Course>(databaseSettings.CourseCollectionName);
+        _categoryCollection = database.GetCollection<Category>(databaseSettings.CategoryCollectionName);
+
+        _mapper = mapper;
+    }
+
+    public async Task<Response<CourseDto>> CreateAsync(CourseCreateDto courseCreateDto)
+    {
+        var newCourse = _mapper.Map<Course>(courseCreateDto);
+
+        newCourse.CreatedDate = DateTime.Now;
+
+        try
+        {
+            await _courseCollection.InsertOneAsync(newCourse);
+
+            var mappedCourse = _mapper.Map<CourseDto>(newCourse);
+            return Response<CourseDto>.Success(data: mappedCourse, statusCode: 201);
+        }
+        catch (System.Exception e)
+        {
+            var errorMessages = new List<string> { e.Message };
+            return Response<CourseDto>.Fail(errors: errorMessages,
+                                              statusCode: 500);
+        }
+    }
+
+    public async Task<Response<List<CourseDto>>> GetAllAsync()
+    {
+        var courses = await _courseCollection.Find(course => true)
+                                                 .ToListAsync();
+
+        if (courses.Any())
+        {
+            // TODO: foreach çok sağlıklı değil, Agregation join yapılmalı
+            foreach (var course in courses)
+                course.Category = await _categoryCollection.Find(c => c.Id == course.CategoryId).FirstAsync();
+
+            return Response<List<CourseDto>>.Success(data: _mapper.Map<List<CourseDto>>(courses),
+                                                       statusCode: 200);
+        }
+        else
+        {
+            return new Response<List<CourseDto>>();
+        }
+
+    }
+
+    public async Task<Response<List<CourseDto>>> GetAllByUserIdAsync(string id)
+    {
+        var course = await _courseCollection.Find(course => course.UserId == id)
+                                               .FirstOrDefaultAsync();
+        if (course == null)
+        {
+            return new Response<List<CourseDto>>();
+        }
+
+        course.Category = await _categoryCollection.Find(c => c.Id == course.CategoryId).FirstAsync();
+        return Response<List<CourseDto>>.Success(data: _mapper.Map<List<CourseDto>>(course),
+                                             statusCode: 200);
+    }
+
+    public async Task<Response<CourseDto>> GetByIdAsync(string id)
+    {
+        var course = await _courseCollection.Find(course => course.Id == id)
+                                                .FirstOrDefaultAsync();
+
+        if (course == null)
+        {
+            return Response<CourseDto>.Fail(
+                                              error: $"course not found with id {id}",
+                                              statusCode: 404);
+        }
+
+        course.Category = await _categoryCollection.Find(c => c.Id == course.CategoryId).FirstAsync();
+        return Response<CourseDto>.Success(data: _mapper.Map<CourseDto>(course),
+                                             statusCode: 200);
+    }
+
+    public async void UpdateAsync(CourseUpdateDto courseUpdateDto)
+    {
+        var updatedCourse = _mapper.Map<Course>(courseUpdateDto);
+
+        try
+        {
+            await _courseCollection.FindOneAndReplaceAsync(c => c.Id == courseUpdateDto.Id, updatedCourse);
+        }
+        catch (System.Exception)
+        {
+            throw;
+        }
+    }
+
+    public async void DeleteAsync(string id)
+    {
+        try
+        {
+            await _courseCollection.DeleteOneAsync(c => c.Id == id);
+        }
+        catch (System.Exception)
+        {
+            throw;
+        }
+    }
+}

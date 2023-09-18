@@ -9,5 +9,6 @@ public class FeatureMapping : Profile
     public FeatureMapping()
     {
         CreateMap<Feature, FeatureDto>().ReverseMap();
+        CreateMap<Feature, FeatureCreateDto>().ReverseMap();
     }
 }

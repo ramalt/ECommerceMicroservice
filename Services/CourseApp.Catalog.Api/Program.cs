@@ -1,4 +1,5 @@
 using CourseApp.Catalog.Api.Config;
+using CourseApp.Catalog.Api.Services;
 using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,7 +9,11 @@ builder.Services.AddAutoMapper(typeof(Program));
 // Db Connection configs
 builder.Services.AddSingleton<IDatabaseSettings>(serviceProvider => serviceProvider.GetRequiredService<IOptions<DatabaseSettings>>().Value);
 
-builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("DatabaseSetttings"));
+builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("DatabaseSettings"));
+
+// Category Service registration
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<ICourseService, CourseService>();
 
 builder.Services.AddControllers();
 

@@ -9,6 +9,7 @@ public record CourseDto(string Id,
                         decimal Price,
                         string Picture,
                         string UserId,
+                        string CategoryId,
                         DateTime CreatedDate,
                         FeatureDto Feature,
                         CategoryDto Category);

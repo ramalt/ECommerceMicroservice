@@ -1,3 +1,3 @@
 namespace CourseApp.Catalog.Api.Dtos.Feaure;
 
-public record FeatureCreateDto(string Duration);
+public record FeatureCreateDto(int Duration);
