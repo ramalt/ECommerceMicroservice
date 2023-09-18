@@ -1,5 +1,6 @@
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddControllers();
 
