@@ -72,6 +72,7 @@ public class CourseService : ICourseService
                                                .ToListAsync();
         if (courses.Any())
         {
+            // TODO: foreach yerine Aggregation join 
             foreach (var course in courses)
             {
                 course.Category = await _categoryCollection.Find(c => c.Id == course.CategoryId).FirstAsync();
