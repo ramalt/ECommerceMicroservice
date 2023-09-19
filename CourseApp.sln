@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseApp.Shared", "BuildingBlocks\CourseApp.Shared\CourseApp.Shared.csproj", "{18C6D148-A21E-490A-AA62-122D8BB782C5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseApp.IdentityServer", "Services\CourseApp.IdentityServer\CourseApp.IdentityServer.csproj", "{2F4D5A3A-8BE6-4B00-A8A3-98C7E5939BFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,9 +30,14 @@ Global
 		{18C6D148-A21E-490A-AA62-122D8BB782C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18C6D148-A21E-490A-AA62-122D8BB782C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18C6D148-A21E-490A-AA62-122D8BB782C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F4D5A3A-8BE6-4B00-A8A3-98C7E5939BFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F4D5A3A-8BE6-4B00-A8A3-98C7E5939BFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F4D5A3A-8BE6-4B00-A8A3-98C7E5939BFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F4D5A3A-8BE6-4B00-A8A3-98C7E5939BFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6ECD23FB-C173-4813-9728-F45060F3392A} = {FAA4FB8A-C7A7-4A23-974F-9E19D03DFE0F}
 		{18C6D148-A21E-490A-AA62-122D8BB782C5} = {D0B63DF3-60D3-4420-8429-C26D818464B6}
+		{2F4D5A3A-8BE6-4B00-A8A3-98C7E5939BFF} = {FAA4FB8A-C7A7-4A23-974F-9E19D03DFE0F}
 	EndGlobalSection
 EndGlobal
