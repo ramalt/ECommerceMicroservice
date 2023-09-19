@@ -2,7 +2,11 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
+using CourseApp.IdentityServer.Data;
+using CourseApp.IdentityServer.Models;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -37,22 +41,31 @@ namespace CourseApp.IdentityServer
 
             try
             {
-                var seed = args.Contains("/seed");
-                if (seed)
-                {
-                    args = args.Except(new[] { "/seed" }).ToArray();
-                }
 
                 var host = CreateHostBuilder(args).Build();
 
-                if (seed)
+                using (var scope = host.Services.CreateScope())
                 {
-                    Log.Information("Seeding database...");
-                    var config = host.Services.GetRequiredService<IConfiguration>();
-                    var connectionString = config.GetConnectionString("DefaultConnection");
-                    SeedData.EnsureSeedData(connectionString);
-                    Log.Information("Done seeding database.");
-                    return 0;
+                    var serviceProvier = scope.ServiceProvider;
+
+                    var applicationDbContext = serviceProvier.GetRequiredService<ApplicationDbContext>();
+
+                    applicationDbContext.Database.Migrate();
+
+                    Log.Information("-> if there any pending migration, migration was applied.. ");
+
+                    var userManager = serviceProvier.GetRequiredService<UserManager<ApplicationUser>>();
+
+                    if (!userManager.Users.Any())
+                    {
+                        userManager.CreateAsync(new ApplicationUser
+                        {
+                            UserName = "DoeJohn_7",
+                            Email = "johndoe@mail.com",
+                        }, "JohnDoe1234!").Wait();
+
+                        Log.Information("-> Default user created.");
+                    }
                 }
 
                 Log.Information("Starting host...");
