@@ -24,7 +24,7 @@ public class CategoryController : CustomBaseController
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetCategoryById()
+    public async Task<IActionResult> GetCategories()
     {
         var response = await _categoryService.GetAllAsync();
         return CreateActionResult(response);
