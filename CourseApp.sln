@@ -3,33 +3,32 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{FAA4FB8A-C7A7-4A23-974F-9E19D03DFE0F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseApp.Catalog.Api", "Services\CourseApp.Catalog.Api\CourseApp.Catalog.Api.csproj", "{6ECD23FB-C173-4813-9728-F45060F3392A}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{D0B63DF3-60D3-4420-8429-C26D818464B6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseApp.Shared", "BuildingBlocks\CourseApp.Shared\CourseApp.Shared.csproj", "{18C6D148-A21E-490A-AA62-122D8BB782C5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseApp.IdentityServer", "CourseApp.IdentityServer\CourseApp.IdentityServer.csproj", "{10201EA3-54BD-4CC9-8D4D-E3D79CA980C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseApp.PhotoStock.Api", "Services\CourseApp.PhotoStock.Api\CourseApp.PhotoStock.Api.csproj", "{10A01CAC-E55F-4059-82B3-A28A80F241DB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{350BB43F-A798-45C6-B198-74351D89FCC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseApp.Payment.Api", "Services\CourseApp.Payment.Api\CourseApp.Payment.Api.csproj", "{01840B56-2C65-4927-B15E-976332178D62}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CatalogService", "CatalogService", "{CA1FD6D7-34D4-4FED-AC40-AECDBC472EDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseApp.Catalog.Api", "Services\CatalogService\CourseApp.Catalog.Api\CourseApp.Catalog.Api.csproj", "{060A06FF-C2E8-4993-A795-61EDE09798C0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PhotoStockService", "PhotoStockService", "{2E01917A-9AE1-4430-BB3D-09EFD6613C9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseApp.PhotoStock.Api", "Services\PhotoStockService\CourseApp.PhotoStock.Api\CourseApp.PhotoStock.Api.csproj", "{8A3A58C8-A27B-4A59-9D51-3F8B0367343A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PaymentService", "PaymentService", "{E0DBF880-2E40-4277-80D4-542DCEB948C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseApp.Payment.Api", "Services\PaymentService\CourseApp.Payment.Api\CourseApp.Payment.Api.csproj", "{7534AD55-B2D5-4095-8DB7-8F795B14ABBA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6ECD23FB-C173-4813-9728-F45060F3392A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6ECD23FB-C173-4813-9728-F45060F3392A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6ECD23FB-C173-4813-9728-F45060F3392A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6ECD23FB-C173-4813-9728-F45060F3392A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{18C6D148-A21E-490A-AA62-122D8BB782C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{18C6D148-A21E-490A-AA62-122D8BB782C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18C6D148-A21E-490A-AA62-122D8BB782C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -38,19 +37,29 @@ Global
 		{10201EA3-54BD-4CC9-8D4D-E3D79CA980C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10201EA3-54BD-4CC9-8D4D-E3D79CA980C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10201EA3-54BD-4CC9-8D4D-E3D79CA980C3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{10A01CAC-E55F-4059-82B3-A28A80F241DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{10A01CAC-E55F-4059-82B3-A28A80F241DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{10A01CAC-E55F-4059-82B3-A28A80F241DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{10A01CAC-E55F-4059-82B3-A28A80F241DB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{01840B56-2C65-4927-B15E-976332178D62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{01840B56-2C65-4927-B15E-976332178D62}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{01840B56-2C65-4927-B15E-976332178D62}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{01840B56-2C65-4927-B15E-976332178D62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{060A06FF-C2E8-4993-A795-61EDE09798C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{060A06FF-C2E8-4993-A795-61EDE09798C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{060A06FF-C2E8-4993-A795-61EDE09798C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{060A06FF-C2E8-4993-A795-61EDE09798C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A3A58C8-A27B-4A59-9D51-3F8B0367343A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A3A58C8-A27B-4A59-9D51-3F8B0367343A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A3A58C8-A27B-4A59-9D51-3F8B0367343A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A3A58C8-A27B-4A59-9D51-3F8B0367343A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7534AD55-B2D5-4095-8DB7-8F795B14ABBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7534AD55-B2D5-4095-8DB7-8F795B14ABBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7534AD55-B2D5-4095-8DB7-8F795B14ABBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7534AD55-B2D5-4095-8DB7-8F795B14ABBA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{6ECD23FB-C173-4813-9728-F45060F3392A} = {FAA4FB8A-C7A7-4A23-974F-9E19D03DFE0F}
 		{18C6D148-A21E-490A-AA62-122D8BB782C5} = {D0B63DF3-60D3-4420-8429-C26D818464B6}
-		{10A01CAC-E55F-4059-82B3-A28A80F241DB} = {FAA4FB8A-C7A7-4A23-974F-9E19D03DFE0F}
-		{01840B56-2C65-4927-B15E-976332178D62} = {FAA4FB8A-C7A7-4A23-974F-9E19D03DFE0F}
+		{CA1FD6D7-34D4-4FED-AC40-AECDBC472EDD} = {350BB43F-A798-45C6-B198-74351D89FCC6}
+		{060A06FF-C2E8-4993-A795-61EDE09798C0} = {CA1FD6D7-34D4-4FED-AC40-AECDBC472EDD}
+		{2E01917A-9AE1-4430-BB3D-09EFD6613C9F} = {350BB43F-A798-45C6-B198-74351D89FCC6}
+		{8A3A58C8-A27B-4A59-9D51-3F8B0367343A} = {2E01917A-9AE1-4430-BB3D-09EFD6613C9F}
+		{E0DBF880-2E40-4277-80D4-542DCEB948C6} = {350BB43F-A798-45C6-B198-74351D89FCC6}
+		{7534AD55-B2D5-4095-8DB7-8F795B14ABBA} = {E0DBF880-2E40-4277-80D4-542DCEB948C6}
 	EndGlobalSection
 EndGlobal
