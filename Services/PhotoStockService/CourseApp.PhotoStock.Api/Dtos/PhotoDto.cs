@@ -1,4 +1,4 @@
-namespace CourseApp.PhotoStock.Api.Dtos;
+namespace PhotoStockService.CourseApp.PhotoStock.Api.Dtos;
 
 public class PhotoDto
 {

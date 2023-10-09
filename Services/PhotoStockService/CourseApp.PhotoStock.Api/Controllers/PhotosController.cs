@@ -1,4 +1,4 @@
-using CourseApp.PhotoStock.Api.Dtos;
+using PhotoStockService.CourseApp.PhotoStock.Api.Dtos;
 using CourseApp.Shared;
 using CourseApp.Shared.Dtos;
 using Microsoft.AspNetCore.Mvc;
