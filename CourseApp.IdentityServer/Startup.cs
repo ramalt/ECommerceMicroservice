@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using CourseApp.IdentityServer.Services;
 
 namespace CourseApp.IdentityServer
 {
@@ -29,6 +30,7 @@ namespace CourseApp.IdentityServer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddLocalApiAuthentication();
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -47,7 +49,7 @@ namespace CourseApp.IdentityServer
                 // see https://identityserver4.readthedocs.io/en/latest/topics/resources.html
                 options.EmitStaticAudienceClaim = true;
             })
-                // .AddInMemoryIdentityResources(Config.IdentityResources)
+                .AddInMemoryIdentityResources(Config.IdentityResources)
                 .AddInMemoryApiResources(Config.ApiResources)
                 .AddInMemoryApiScopes(Config.ApiScopes)
                 .AddInMemoryClients(Config.Clients)
@@ -56,6 +58,9 @@ namespace CourseApp.IdentityServer
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
 
+            // password validator
+            builder.AddResourceOwnerValidator<IdentityResourceOwnerPasswordValidator>();
+            
             services.AddAuthentication()
                 .AddGoogle(options =>
                 {

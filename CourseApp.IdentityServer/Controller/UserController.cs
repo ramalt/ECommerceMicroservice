@@ -6,9 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using CourseApp.Shared.Dtos;
 using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Authorization;
+using static IdentityServer4.IdentityServerConstants;
 
 namespace CourseApp.IdentityServer.Controller
 {
+    [Authorize(LocalApi.PolicyName)]
     [ApiController]
     [Route("api/[controller]/[action]")]
     public class UserController : ControllerBase
@@ -40,16 +43,17 @@ namespace CourseApp.IdentityServer.Controller
             return NoContent();
         }
 
-        [HttpGet]
+        //! TODO: claims okunöuyor. istek at dene.
+        [HttpGet] 
         public async Task<IActionResult> GetUser()
         {
-            var userIdClaim = User.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Sub);
+            var userIdClaim = User.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Sub); //? OpenId, Email, Profile, roles
 
-            if (userIdClaim == null) return BadRequest();
+            if (userIdClaim == null) return BadRequest(new { error = "claims not found" });
 
             var user = await _userManager.FindByIdAsync(userIdClaim.Value);
 
-            if (user == null) return BadRequest();
+            if (user == null) return BadRequest(new { error = "User not found" });
 
             return Ok(new { Id = user.Id, UserName = user.UserName, Email = user.Email });
         }

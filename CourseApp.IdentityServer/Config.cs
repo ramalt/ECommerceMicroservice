@@ -4,6 +4,7 @@
 
 using IdentityServer4;
 using IdentityServer4.Models;
+using System;
 using System.Collections.Generic;
 
 namespace CourseApp.IdentityServer
@@ -11,8 +12,19 @@ namespace CourseApp.IdentityServer
     public static class Config
     {
 
-        // public static IEnumerable<IdentityResource> IdentityResources =>
-        //    new IdentityResource[]{};
+        public static IEnumerable<IdentityResource> IdentityResources =>
+           new IdentityResource[]
+           {
+                new IdentityResources.OpenId(), //*required sub 
+                new IdentityResources.Email(),
+                new IdentityResources.Profile(),
+                new IdentityResource(){
+                    Name = "roles",
+                    DisplayName = "Roles",
+                    Description = "User Roles",
+                    UserClaims = new []{"role"}},
+
+           };
 
         public static IEnumerable<ApiResource> ApiResources =>
             new ApiResource[]
@@ -44,6 +56,26 @@ namespace CourseApp.IdentityServer
                     AllowedScopes = {"catalog_fullpermission", "photostock_fullpermission", IdentityServerConstants.LocalApi.ScopeName}
                 },
 
+                new Client
+                {
+                    ClientName = "ASP.NET Core 6 MVC App",
+                    ClientId = "MVCWebAppUser",
+                    AllowOfflineAccess = true, //refresh token activation
+                    ClientSecrets = {new Secret("secret".Sha512())},
+                    AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,// clientId, ClientSecret, UserNamei Pass
+                    AllowedScopes = {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Email,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.OfflineAccess,//refresh token access
+                        IdentityServerConstants.LocalApi.ScopeName,
+                        "roles"},
+
+                    RefreshTokenExpiration = TokenExpiration.Absolute,
+                    RefreshTokenUsage = TokenUsage.ReUse, //reusable refresh token
+                    AccessTokenLifetime = 1*60*60, // 1 hour
+                    AbsoluteRefreshTokenLifetime = (int)(DateTime.Now.AddDays(60) - DateTime.Now).TotalSeconds, // 60 days
+                    }
             };
     }
 }
