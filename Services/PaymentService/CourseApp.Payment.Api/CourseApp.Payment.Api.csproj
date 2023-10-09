@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\BuildingBlocks\CourseApp.Shared\CourseApp.Shared.csproj" />
+    <ProjectReference Include="..\..\..\BuildingBlocks\CourseApp.Shared\CourseApp.Shared.csproj" />
   </ItemGroup>
 
 </Project>

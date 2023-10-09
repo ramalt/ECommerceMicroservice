@@ -2,7 +2,7 @@ using CourseApp.Shared;
 using CourseApp.Shared.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CourseApp.Payment.Api.Controllers;
+namespace PaymentSerice.CourseApp.Payment.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
