@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseApp.IdentityServer", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseApp.PhotoStock.Api", "Services\CourseApp.PhotoStock.Api\CourseApp.PhotoStock.Api.csproj", "{10A01CAC-E55F-4059-82B3-A28A80F241DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseApp.Payment.Api", "Services\CourseApp.Payment.Api\CourseApp.Payment.Api.csproj", "{01840B56-2C65-4927-B15E-976332178D62}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,10 +42,15 @@ Global
 		{10A01CAC-E55F-4059-82B3-A28A80F241DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10A01CAC-E55F-4059-82B3-A28A80F241DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10A01CAC-E55F-4059-82B3-A28A80F241DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01840B56-2C65-4927-B15E-976332178D62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01840B56-2C65-4927-B15E-976332178D62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01840B56-2C65-4927-B15E-976332178D62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01840B56-2C65-4927-B15E-976332178D62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6ECD23FB-C173-4813-9728-F45060F3392A} = {FAA4FB8A-C7A7-4A23-974F-9E19D03DFE0F}
 		{18C6D148-A21E-490A-AA62-122D8BB782C5} = {D0B63DF3-60D3-4420-8429-C26D818464B6}
 		{10A01CAC-E55F-4059-82B3-A28A80F241DB} = {FAA4FB8A-C7A7-4A23-974F-9E19D03DFE0F}
+		{01840B56-2C65-4927-B15E-976332178D62} = {FAA4FB8A-C7A7-4A23-974F-9E19D03DFE0F}
 	EndGlobalSection
 EndGlobal
