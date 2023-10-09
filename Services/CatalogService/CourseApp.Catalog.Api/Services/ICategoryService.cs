@@ -1,9 +1,9 @@
-using CourseApp.Catalog.Api.Dtos.Category;
-using CourseApp.Catalog.Api.Models;
+using CatalogService.CourseApp.Catalog.Api.Dtos.Category;
+using CatalogService.CourseApp.Catalog.Api.Models;
 using CourseApp.Shared.Dtos;
 using MongoDB.Bson;
 
-namespace CourseApp.Catalog.Api.Services;
+namespace CatalogService.CourseApp.Catalog.Api.Services;
 
 public interface ICategoryService
 {

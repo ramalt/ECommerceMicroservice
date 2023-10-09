@@ -1,11 +1,12 @@
-using AutoMapper;
-using CourseApp.Catalog.Api.Config;
-using CourseApp.Catalog.Api.Dtos.Category;
-using CourseApp.Catalog.Api.Models;
+using CatalogService.CourseApp.Catalog.Api.Config;
+using CatalogService.CourseApp.Catalog.Api.Dtos.Category;
+using CatalogService.CourseApp.Catalog.Api.Models;
 using CourseApp.Shared.Dtos;
+using AutoMapper;
 using MongoDB.Driver;
+using CatalogService.CourseApp.Catalog.Api.Services;
 
-namespace CourseApp.Catalog.Api.Services;
+namespace CatalogService.CatalogService.CourseApp.Catalog.Api.Services;
 
 public class CategoryService : ICategoryService
 {

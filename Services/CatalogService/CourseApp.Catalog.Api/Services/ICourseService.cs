@@ -1,7 +1,7 @@
-using CourseApp.Catalog.Api.Dtos.Course;
+using CatalogService.CourseApp.Catalog.Api.Dtos.Course;
 using CourseApp.Shared.Dtos;
 
-namespace CourseApp.Catalog.Api.Services;
+namespace CatalogService.CourseApp.Catalog.Api.Services;
 
 public interface ICourseService
 {

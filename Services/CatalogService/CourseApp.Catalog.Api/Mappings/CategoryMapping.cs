@@ -1,8 +1,8 @@
 using AutoMapper;
-using CourseApp.Catalog.Api.Dtos.Category;
-using CourseApp.Catalog.Api.Models;
+using CatalogService.CourseApp.Catalog.Api.Dtos.Category;
+using CatalogService.CourseApp.Catalog.Api.Models;
 
-namespace CourseApp.Catalog.Api.Mappings;
+namespace CatalogService.CourseApp.Catalog.Api.Mappings;
 
 public class CategoryMapping : Profile
 {

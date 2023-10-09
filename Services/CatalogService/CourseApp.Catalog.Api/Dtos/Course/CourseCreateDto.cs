@@ -1,6 +1,6 @@
-using CourseApp.Catalog.Api.Dtos.Feaure;
+using CatalogService.CourseApp.Catalog.Api.Dtos.Feaure;
 
-namespace CourseApp.Catalog.Api.Dtos.Course;
+namespace CatalogService.CourseApp.Catalog.Api.Dtos.Course;
 
 public record CourseCreateDto(string Name,
                               string Description,

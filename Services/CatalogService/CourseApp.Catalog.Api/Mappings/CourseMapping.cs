@@ -1,9 +1,9 @@
+using CatalogService.CourseApp.Catalog.Api.Dtos.Course;
+using CatalogService.CourseApp.Catalog.Api.Models;
 using AutoMapper;
-using CourseApp.Catalog.Api.Dtos.Course;
-using CourseApp.Catalog.Api.Models;
 using MongoDB.Bson;
 
-namespace CourseApp.Catalog.Api.Mappings;
+namespace CatalogService.CourseApp.Catalog.Api.Mappings;
 
 public class CourseMapping : Profile
 {

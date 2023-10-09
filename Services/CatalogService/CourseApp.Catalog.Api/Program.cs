@@ -1,5 +1,6 @@
-using CourseApp.Catalog.Api.Config;
-using CourseApp.Catalog.Api.Services;
+using CatalogService.CatalogService.CourseApp.Catalog.Api.Services;
+using CatalogService.CourseApp.Catalog.Api.Config;
+using CatalogService.CourseApp.Catalog.Api.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Options;

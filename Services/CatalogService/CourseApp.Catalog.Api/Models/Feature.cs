@@ -1,4 +1,4 @@
-namespace CourseApp.Catalog.Api.Models;
+namespace CatalogService.CourseApp.Catalog.Api.Models;
 
 public class Feature
 {

@@ -1,9 +1,9 @@
-using CourseApp.Catalog.Api.Dtos.Category;
-using CourseApp.Catalog.Api.Services;
+using CatalogService.CourseApp.Catalog.Api.Dtos.Category;
+using CatalogService.CourseApp.Catalog.Api.Services;
 using CourseApp.Shared;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CourseApp.Catalog.Api.Controllers;
+namespace CatalogService.CourseApp.Catalog.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]

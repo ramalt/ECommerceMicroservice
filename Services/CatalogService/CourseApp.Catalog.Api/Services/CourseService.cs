@@ -1,11 +1,11 @@
-using AutoMapper;
-using CourseApp.Catalog.Api.Config;
-using CourseApp.Catalog.Api.Dtos.Course;
-using CourseApp.Catalog.Api.Models;
+using CatalogService.CourseApp.Catalog.Api.Config;
+using CatalogService.CourseApp.Catalog.Api.Dtos.Course;
+using CatalogService.CourseApp.Catalog.Api.Models;
 using CourseApp.Shared.Dtos;
+using AutoMapper;
 using MongoDB.Driver;
 
-namespace CourseApp.Catalog.Api.Services;
+namespace CatalogService.CourseApp.Catalog.Api.Services;
 
 public class CourseService : ICourseService
 {

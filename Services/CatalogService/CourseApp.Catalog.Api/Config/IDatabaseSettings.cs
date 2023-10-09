@@ -1,4 +1,4 @@
-namespace CourseApp.Catalog.Api.Config;
+namespace CatalogService.CourseApp.Catalog.Api.Config;
 
 public interface IDatabaseSettings
 {

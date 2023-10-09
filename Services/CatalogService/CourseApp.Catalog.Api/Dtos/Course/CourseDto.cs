@@ -1,7 +1,7 @@
-using CourseApp.Catalog.Api.Dtos.Category;
-using CourseApp.Catalog.Api.Dtos.Feaure;
+using CatalogService.CourseApp.Catalog.Api.Dtos.Category;
+using CatalogService.CourseApp.Catalog.Api.Dtos.Feaure;
 
-namespace CourseApp.Catalog.Api.Dtos.Course;
+namespace CatalogService.CourseApp.Catalog.Api.Dtos.Course;
 
 public record CourseDto(string Id,
                         string Name,
