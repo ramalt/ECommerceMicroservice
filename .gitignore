@@ -11,6 +11,7 @@
 *.sln.docstates
 .todo.txt
 .vscode
+*.wwwroot/photos
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

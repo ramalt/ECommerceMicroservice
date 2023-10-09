@@ -38,6 +38,6 @@ public class PhotosController : CustomBaseController
         }
         SystemFile.Delete(path);
 
-        return CreateActionResult(Response<PhotoDto>.Success(200));
+        return NoContent();
     }
 }
