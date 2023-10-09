@@ -71,7 +71,7 @@ namespace CourseApp.IdentityServer
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.OfflineAccess,//refresh token access
                         IdentityServerConstants.LocalApi.ScopeName,
-                        "paymnet_fullpermission",
+                        "payment_fullpermission",
                         "roles"},
 
                     RefreshTokenExpiration = TokenExpiration.Absolute,
