@@ -1,3 +1,4 @@
+using CourseApp.Basket.Api;
 using CourseApp.Basket.Api.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//redis
+builder.Services.configureRedis();
 
 builder.Services.Configure<RedisSettings>(builder.Configuration.GetSection("RegisSettings"));
 
