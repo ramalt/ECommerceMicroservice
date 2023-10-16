@@ -9,6 +9,10 @@ public class OrderItem : Entity
     public string? PictureUrl { get; private set; }
     public Decimal Price { get; private set; }
 
+    public OrderItem()
+    {
+        
+    }
     public OrderItem(string productId, string productName, string? pictureUrl, decimal price)
     {
         Price = price;

@@ -17,6 +17,10 @@ public class Order : AggregateRoot
         BuyerId = buyerId;
         Address = address;
     }
+    public Order()
+    {
+        
+    }
 
     public void AddOrderItem(string productId, string productName, decimal price, string pictureUrl)
     {
