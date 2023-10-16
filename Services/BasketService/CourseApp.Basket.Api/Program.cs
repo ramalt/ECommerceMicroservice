@@ -1,4 +1,5 @@
 using CourseApp.Basket.Api;
+using CourseApp.Basket.Api.Services;
 using CourseApp.Basket.Api.Settings;
 using CourseApp.Shared.services;
 
@@ -19,6 +20,8 @@ builder.Services.AddScoped<ISharedIdentityService, SharedIndentityService>();
 builder.Services.configureRedis();
 
 builder.Services.Configure<RedisSettings>(builder.Configuration.GetSection("RegisSettings"));
+
+builder.Services.AddScoped<IBasketService, BasketService>();
 
 
 var app = builder.Build();
