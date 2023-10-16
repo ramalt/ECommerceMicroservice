@@ -32,6 +32,7 @@ namespace CourseApp.IdentityServer
                 new ApiResource("resource_catalog"){Scopes = {"catalog_fullpermission"}},
                 new ApiResource("resource_photo_stock"){Scopes = {"photostock_fullpermission"}},
                 new ApiResource("resource_payment_catalog"){Scopes = {"payment_fullpermission"}},
+                new ApiResource("resource_basket"){Scopes = {"basket_fullpermission"}},
                 new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
             };
 
@@ -42,6 +43,7 @@ namespace CourseApp.IdentityServer
                 new ApiScope("catalog_fullpermission", "Catalog Service full erişim"),
                 new ApiScope("photostock_fullpermission", "PhotoStock Service full erişim"),
                 new ApiScope("payment_fullpermission", "Payment Service full erişim"),
+                new ApiScope("basket_fullpermission", "Basket Service full erişim"),
                 new ApiScope(IdentityServerConstants.LocalApi.ScopeName),
             };
 
@@ -72,6 +74,7 @@ namespace CourseApp.IdentityServer
                         IdentityServerConstants.StandardScopes.OfflineAccess,//refresh token access
                         IdentityServerConstants.LocalApi.ScopeName,
                         "payment_fullpermission",
+                        "basket_fullpermission",
                         "roles"},
 
                     RefreshTokenExpiration = TokenExpiration.Absolute,
