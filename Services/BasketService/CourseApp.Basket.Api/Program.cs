@@ -1,5 +1,6 @@
 using CourseApp.Basket.Api;
 using CourseApp.Basket.Api.Settings;
+using CourseApp.Shared.services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,10 +11,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// identiy service
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<ISharedIdentityService, SharedIndentityService>();
+
 //redis
 builder.Services.configureRedis();
 
 builder.Services.Configure<RedisSettings>(builder.Configuration.GetSection("RegisSettings"));
+
 
 var app = builder.Build();
 
