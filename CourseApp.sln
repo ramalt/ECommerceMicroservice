@@ -23,6 +23,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PaymentService", "PaymentSe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseApp.Payment.Api", "Services\PaymentService\CourseApp.Payment.Api\CourseApp.Payment.Api.csproj", "{7534AD55-B2D5-4095-8DB7-8F795B14ABBA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BasketService", "BasketService", "{90BBD81A-A47C-40A7-B619-9F7352970345}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseApp.Basket.Api", "Services\BasketService\CourseApp.Basket.Api\CourseApp.Basket.Api.csproj", "{C6652B59-43CB-44FC-9B25-4D09968B94CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +53,10 @@ Global
 		{7534AD55-B2D5-4095-8DB7-8F795B14ABBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7534AD55-B2D5-4095-8DB7-8F795B14ABBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7534AD55-B2D5-4095-8DB7-8F795B14ABBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6652B59-43CB-44FC-9B25-4D09968B94CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6652B59-43CB-44FC-9B25-4D09968B94CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6652B59-43CB-44FC-9B25-4D09968B94CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6652B59-43CB-44FC-9B25-4D09968B94CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,5 +69,7 @@ Global
 		{8A3A58C8-A27B-4A59-9D51-3F8B0367343A} = {2E01917A-9AE1-4430-BB3D-09EFD6613C9F}
 		{E0DBF880-2E40-4277-80D4-542DCEB948C6} = {350BB43F-A798-45C6-B198-74351D89FCC6}
 		{7534AD55-B2D5-4095-8DB7-8F795B14ABBA} = {E0DBF880-2E40-4277-80D4-542DCEB948C6}
+		{90BBD81A-A47C-40A7-B619-9F7352970345} = {350BB43F-A798-45C6-B198-74351D89FCC6}
+		{C6652B59-43CB-44FC-9B25-4D09968B94CA} = {90BBD81A-A47C-40A7-B619-9F7352970345}
 	EndGlobalSection
 EndGlobal
