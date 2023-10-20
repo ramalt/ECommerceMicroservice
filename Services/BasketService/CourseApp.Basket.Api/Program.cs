@@ -35,7 +35,7 @@ builder.Services.AddScoped<ISharedIdentityService, SharedIndentityService>();
 //redis
 builder.Services.configureRedis();
 
-builder.Services.Configure<RedisSettings>(builder.Configuration.GetSection("RegisSettings"));
+builder.Services.Configure<RedisSettings>(builder.Configuration.GetSection("RedisSettings"));
 
 builder.Services.AddScoped<IBasketService, BasketService>();
 
