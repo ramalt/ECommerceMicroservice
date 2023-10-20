@@ -1,3 +1,4 @@
+using System.IdentityModel.Tokens.Jwt;
 using CourseApp.Basket.Api;
 using CourseApp.Basket.Api.Services;
 using CourseApp.Basket.Api.Settings;
@@ -26,6 +27,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     options.RequireHttpsMetadata = true;
 
 });
+
+JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("sub"); //token payload "sub" claim not mapping to "nameidentifier"
 
 
 // identiy service
