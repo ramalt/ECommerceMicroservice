@@ -1,4 +1,5 @@
 using CourseApp.Order.Infrastructure;
+using CourseApp.Shared.services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +16,9 @@ builder.Services.AddDbContext<OrderDbContext>(opt => {
         builder.MigrationsAssembly("CourseApp.Order.Infrastructure");
     });
 });
+
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<ISharedIdentityService, SharedIndentityService>();
 
 var app = builder.Build();
 
