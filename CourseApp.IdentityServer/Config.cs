@@ -35,6 +35,7 @@ namespace CourseApp.IdentityServer
                 new ApiResource("resource_basket"){Scopes = {"basket_fullpermission"}},
                 new ApiResource("resource_discount"){Scopes = {"Discount_fullpermission", "Discount_read","Discount_write"}},
                 new ApiResource("resource_order"){Scopes = {"Order_fullpermission"}},
+                new ApiResource("resource_gateway"){Scopes = {"gateway_fullpermission"}},
                 new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
             };
 
@@ -50,6 +51,7 @@ namespace CourseApp.IdentityServer
                 new ApiScope("Discount_read", "Discount Service okuma erişimi"),
                 new ApiScope("Discount_write", "Discount Service yazma erişimi"),
                 new ApiScope("Order_fullpermission", "Order Service yazma erişimi"),
+                new ApiScope("gateway_fullpermission", "API Gateway full Erişim"),
                 new ApiScope(IdentityServerConstants.LocalApi.ScopeName),
             };
 
@@ -63,7 +65,13 @@ namespace CourseApp.IdentityServer
                     ClientId = "MVCWebApp",
                     ClientSecrets = {new Secret("secret".Sha512())},
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
-                    AllowedScopes ={"catalog_fullpermission","photostock_fullpermission",IdentityServerConstants.LocalApi.ScopeName}
+                    AllowedScopes =
+                    {
+                        "catalog_fullpermission",
+                        "photostock_fullpermission",
+                        "gateway_fullpermission",
+                        IdentityServerConstants.LocalApi.ScopeName
+                    }
                 },
 
                 new Client
@@ -83,6 +91,7 @@ namespace CourseApp.IdentityServer
                         "basket_fullpermission",
                         "Discount_fullpermission",
                         "Order_fullpermission",
+                        "gateway_fullpermission",
                         "roles"},
 
                     RefreshTokenExpiration = TokenExpiration.Absolute,

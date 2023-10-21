@@ -12,7 +12,13 @@
 
             "UpstreamPathTemplate": "/services/catalog/{everything}",
             "UpstreamHttpMethod": ["Get","Post", "Put", "Delete"],
-            "UpstreamHttpScheme":"http"
+            "UpstreamHttpScheme":"http",
+            "AuthenticationOptions":{
+                "AuthenticationProviderKey":"GatewayAuthScheme",
+                "AllowedScopes": [
+                    "catalog_fullpermission"
+                ]
+            }
         },
         {
             "DownstreamPathTemplate": "/api/basket",
@@ -26,7 +32,13 @@
 
             "UpstreamPathTemplate": "/services/basket",
             "UpstreamHttpMethod": ["Get","Post", "Delete"],
-            "UpstreamHttpScheme":"http"
+            "UpstreamHttpScheme":"http",
+            "AuthenticationOptions":{
+                "AuthenticationProviderKey":"GatewayAuthScheme",
+                "AllowedScopes": [
+                    "basket_fullpermission"
+                ]
+            }
         },
         {
             "DownstreamPathTemplate": "/api/discount/{everything}",
@@ -40,7 +52,13 @@
 
             "UpstreamPathTemplate": "/services/discount/{everything}",
             "UpstreamHttpMethod": ["Get","Post", "Put", "Delete"],
-            "UpstreamHttpScheme":"http"
+            "UpstreamHttpScheme":"http",
+            "AuthenticationOptions":{
+                "AuthenticationProviderKey":"GatewayAuthScheme",
+                "AllowedScopes": [
+                    "discount_fullpermission"
+                ]
+            }
         },
         {
             "DownstreamPathTemplate": "/api/order",
@@ -54,7 +72,13 @@
 
             "UpstreamPathTemplate": "/services/order",
             "UpstreamHttpMethod": ["Get","Post"],
-            "UpstreamHttpScheme":"http"
+            "UpstreamHttpScheme":"http",
+            "AuthenticationOptions":{
+                "AuthenticationProviderKey":"GatewayAuthScheme",
+                "AllowedScopes": [
+                    "order_fullpermission"
+                ]
+            }
         },
         {
             "DownstreamPathTemplate": "/api/fakepayment",
@@ -68,7 +92,13 @@
 
             "UpstreamPathTemplate": "/services/payment",
             "UpstreamHttpMethod": ["Post"],
-            "UpstreamHttpScheme":"http"
+            "UpstreamHttpScheme":"http",
+            "AuthenticationOptions":{
+                "AuthenticationProviderKey":"GatewayAuthScheme",
+                "AllowedScopes": [
+                    "payment_fullpermission"
+                ]
+            }
         },
         {
             "DownstreamPathTemplate": "/api/photos",
@@ -82,7 +112,13 @@
 
             "UpstreamPathTemplate": "/services/photo",
             "UpstreamHttpMethod": ["Post", "Delete"],
-            "UpstreamHttpScheme":"http"
+            "UpstreamHttpScheme":"http",
+            "AuthenticationOptions":{
+                "AuthenticationProviderKey":"GatewayAuthScheme",
+                "AllowedScopes": [
+                    "photostock_fullpermission"
+                ]
+            }
         }
     ],
     "GlobalConfiguration": {
