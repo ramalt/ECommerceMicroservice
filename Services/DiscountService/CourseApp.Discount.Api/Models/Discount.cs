@@ -1,6 +1,6 @@
 namespace CourseApp.Discount.Api.Models;
 
-[Dapper.Contrib.Extensions.Table("Discounts")]
+[Dapper.Contrib.Extensions.Table("discounts")]
 public class Discount
 {
     public int Id { get; set; }    
