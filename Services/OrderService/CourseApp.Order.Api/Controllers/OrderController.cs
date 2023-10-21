@@ -12,7 +12,7 @@ namespace CourseApp.Order.Api.Controllers;
 [Route("api/[controller]")]
 public class OrderController : CustomBaseController
 {
-    private readonly IMediator _mediator;
+    private readonly ISender _mediator;
     private readonly ISharedIdentityService _identityService;
 
     public OrderController(ISharedIdentityService identityService, IMediator mediator)

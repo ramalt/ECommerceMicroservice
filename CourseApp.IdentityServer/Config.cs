@@ -34,6 +34,7 @@ namespace CourseApp.IdentityServer
                 new ApiResource("resource_payment_catalog"){Scopes = {"payment_fullpermission"}},
                 new ApiResource("resource_basket"){Scopes = {"basket_fullpermission"}},
                 new ApiResource("resource_discount"){Scopes = {"Discount_fullpermission", "Discount_read","Discount_write"}},
+                new ApiResource("resource_order"){Scopes = {"Order_fullpermission"}},
                 new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
             };
 
@@ -48,6 +49,7 @@ namespace CourseApp.IdentityServer
                 new ApiScope("Discount_fullpermission", "Discount Service full erişim"),
                 new ApiScope("Discount_read", "Discount Service okuma erişimi"),
                 new ApiScope("Discount_write", "Discount Service yazma erişimi"),
+                new ApiScope("Order_fullpermission", "Order Service yazma erişimi"),
                 new ApiScope(IdentityServerConstants.LocalApi.ScopeName),
             };
 
@@ -80,6 +82,7 @@ namespace CourseApp.IdentityServer
                         "payment_fullpermission",
                         "basket_fullpermission",
                         "Discount_fullpermission",
+                        "Order_fullpermission",
                         "roles"},
 
                     RefreshTokenExpiration = TokenExpiration.Absolute,
