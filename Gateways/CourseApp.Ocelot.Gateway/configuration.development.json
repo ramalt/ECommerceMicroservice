@@ -1,0 +1,91 @@
+{
+    "Routes": [
+        {
+            "DownstreamPathTemplate": "/api/{everything}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts":[
+                {
+                    "Host":"127.0.0.1",
+                    "Port":5011
+                }
+            ],
+
+            "UpstreamPathTemplate": "/services/catalog/{everything}",
+            "UpstreamHttpMethod": ["Get","Post", "Put", "Delete"],
+            "UpstreamHttpScheme":"http"
+        },
+        {
+            "DownstreamPathTemplate": "/api/basket",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts":[
+                {
+                    "Host":"127.0.0.1",
+                    "Port":5015
+                }
+            ],
+
+            "UpstreamPathTemplate": "/services/basket",
+            "UpstreamHttpMethod": ["Get","Post", "Delete"],
+            "UpstreamHttpScheme":"http"
+        },
+        {
+            "DownstreamPathTemplate": "/api/discount/{everything}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts":[
+                {
+                    "Host":"127.0.0.1",
+                    "Port":5016
+                }
+            ],
+
+            "UpstreamPathTemplate": "/services/discount/{everything}",
+            "UpstreamHttpMethod": ["Get","Post", "Put", "Delete"],
+            "UpstreamHttpScheme":"http"
+        },
+        {
+            "DownstreamPathTemplate": "/api/order",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts":[
+                {
+                    "Host":"127.0.0.1",
+                    "Port":5015
+                }
+            ],
+
+            "UpstreamPathTemplate": "/services/order",
+            "UpstreamHttpMethod": ["Get","Post"],
+            "UpstreamHttpScheme":"http"
+        },
+        {
+            "DownstreamPathTemplate": "/api/fakepayment",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts":[
+                {
+                    "Host":"127.0.0.1",
+                    "Port":5014
+                }
+            ],
+
+            "UpstreamPathTemplate": "/services/payment",
+            "UpstreamHttpMethod": ["Post"],
+            "UpstreamHttpScheme":"http"
+        },
+        {
+            "DownstreamPathTemplate": "/api/photos",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts":[
+                {
+                    "Host":"127.0.0.1",
+                    "Port":5013
+                }
+            ],
+
+            "UpstreamPathTemplate": "/services/photo",
+            "UpstreamHttpMethod": ["Post", "Delete"],
+            "UpstreamHttpScheme":"http"
+        }
+    ],
+    "GlobalConfiguration": {
+        "BaseUrl": "http://127.0.0.1:5000"
+    }
+}

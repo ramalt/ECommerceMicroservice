@@ -1,22 +1,25 @@
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
 
-var configuration = new ConfigurationBuilder()
-                            .AddJsonFile($"configuration.{app.Environment.EnvironmentName.ToLower()}.json")
-                            .AddEnvironmentVariables()
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+
+
+IConfiguration configuration = new ConfigurationBuilder()
+                            .AddJsonFile($"configuration.{builder.Environment.EnvironmentName.ToLower()}.json")
                             .Build();
 
-builder.Services.AddOcelot(configuration);
 
-
-if (app.Environment.IsProduction())
-{
+builder.Services
+    .AddOcelot(configuration);
     
-}
+
+var app = builder.Build();
 
 app.UseOcelot().Wait();
 
 app.Run();
+
