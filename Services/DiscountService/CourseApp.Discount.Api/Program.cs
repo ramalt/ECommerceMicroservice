@@ -1,4 +1,6 @@
 using System.IdentityModel.Tokens.Jwt;
+using CourseApp.Discount.Api.Services;
+using CourseApp.Shared.services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
@@ -16,6 +18,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("sub"); //"sub" claim not mapping to "nameidentifier"
+
 //Jwt config
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
@@ -24,6 +27,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     options.RequireHttpsMetadata = true;
 
 });
+
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<ISharedIdentityService, SharedIndentityService>();
+builder.Services.AddScoped<IDiscountService, DiscountService>();
 
 var app = builder.Build();
 
@@ -35,6 +42,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
