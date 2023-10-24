@@ -1,3 +1,4 @@
+using CourseApp.WebMVC.Handler;
 using CourseApp.WebMVC.Services;
 using CourseApp.WebMVC.Services.Interfaces;
 using CourseApp.WebMVC.Settings;
@@ -13,7 +14,7 @@ builder.Services.AddHttpClient<IIdentityService, IdentityService>();
 var serviceApiSettings = builder.Configuration.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
 builder.Services.AddHttpClient<IUserService, UserService>( opt => {
     opt.BaseAddress = new Uri(serviceApiSettings.IdentityBaseUri);
-});
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
 builder.Services.Configure<ServiceApiSettings>(builder.Configuration.GetSection("ServiceApiSettings"));
 builder.Services.Configure<ClientSettings>(builder.Configuration.GetSection("ClientSettings"));
