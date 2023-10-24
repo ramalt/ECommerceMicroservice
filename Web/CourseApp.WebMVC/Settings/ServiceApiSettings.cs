@@ -2,6 +2,7 @@ namespace CourseApp.WebMVC.Settings;
 
 public class ServiceApiSettings
 {
-    public string BaseUrl { get; set; } = null!;
-    public string PhotoStockUrl { get; set; } = null!;
+    public string BaseUri { get; set; } = null!;
+    public string IdentityBaseUri { get; set; } = null!;
+    public string PhotoStockUri { get; set; } = null!;
 }

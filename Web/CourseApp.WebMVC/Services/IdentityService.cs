@@ -31,7 +31,7 @@ public class IdentityService : IIdentityService
     public async Task<TokenResponse> GetAccessTokenByRefreshToken()
     {
         var discovery = await _httpClient.GetDiscoveryDocumentAsync(new DiscoveryDocumentRequest(){
-            Address = _serviceSettings.BaseUrl,
+            Address = _serviceSettings.IdentityBaseUri,
             Policy = new DiscoveryPolicy(){RequireHttps = false}
         });
 
@@ -73,7 +73,7 @@ public class IdentityService : IIdentityService
     public async Task RevokeRefreshToken()
     {
         var discovery = await _httpClient.GetDiscoveryDocumentAsync(new DiscoveryDocumentRequest(){
-            Address = _serviceSettings.BaseUrl,
+            Address = _serviceSettings.IdentityBaseUri,
             Policy = new DiscoveryPolicy(){RequireHttps = false}
         });
 
@@ -96,7 +96,7 @@ public class IdentityService : IIdentityService
     public async Task<Response<bool>> SingIn(SigninInput signinInput)
     {
         var discovery = await _httpClient.GetDiscoveryDocumentAsync(new DiscoveryDocumentRequest(){
-            Address = _serviceSettings.BaseUrl,
+            Address = _serviceSettings.IdentityBaseUri,
             Policy = new DiscoveryPolicy(){RequireHttps = false}
         });
 
