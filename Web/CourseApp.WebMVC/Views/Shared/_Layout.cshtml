@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@* @model UserViewModel *@
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -30,12 +32,14 @@
                         <div class="dropdown">
                             <button class="btn btn-outline-light btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                Giriş yaptı
+                                @* @Model.UserName *@
+                                @User.Identity.Name
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#">Profil</a></li>
+                                <li><a class="dropdown-item" asp-controller="user" asp-action="profile">Profil</a></li>
                                 <li><a class="dropdown-item" href="#">Kurslarım</a></li>
-                                <li><a class="dropdown-item" href="#">Çıkış yap</a></li>
+                                <li><a class="dropdown-item" asp-controller="auth" asp-action="logout">Çıkış</a></li>
+
                             </ul>
                         </div>
                     }

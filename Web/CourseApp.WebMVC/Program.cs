@@ -11,6 +11,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddHttpClient<IIdentityService, IdentityService>();
 
+builder.Services.AddScoped<ResourceOwnerPasswordTokenHandler>();
+
 var serviceApiSettings = builder.Configuration.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
 builder.Services.AddHttpClient<IUserService, UserService>( opt => {
     opt.BaseAddress = new Uri(serviceApiSettings.IdentityBaseUri);

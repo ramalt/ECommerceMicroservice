@@ -1,6 +1,8 @@
 using System.Security.Principal;
 using CourseApp.WebMVC.Models;
 using CourseApp.WebMVC.Services.Interfaces;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CourseApp.WebMVC.Controllers;
@@ -39,9 +41,12 @@ public class AuthController : Controller
         return RedirectToAction(nameof(Index), "Home");
     }
 
-    // [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    // public IActionResult Error()
-    // {
-    //     return View("Error!");
-    // }
+    public async Task<IActionResult> Logout()
+    {
+        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        await _identity.RevokeRefreshToken();
+
+        return RedirectToAction(nameof(Index), "Home");
+
+    }
 }
