@@ -3,6 +3,7 @@ using CourseApp.WebMVC.Handler;
 using CourseApp.WebMVC.Services;
 using CourseApp.WebMVC.Services.Interfaces;
 using CourseApp.WebMVC.Settings;
+using IdentityModel.AspNetCore.AccessTokenManagement;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace CourseApp.WebMVC;
