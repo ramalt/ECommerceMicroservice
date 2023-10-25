@@ -1,3 +1,4 @@
+using CourseApp.Shared.services;
 using CourseApp.WebMVC.Handler;
 using CourseApp.WebMVC.Services;
 using CourseApp.WebMVC.Services.Interfaces;
@@ -32,14 +33,15 @@ public static class Extensions
 
         services.AddHttpClient<IClientCredentialTokenService, ClientCredentialTokenService>();
     }
-
     public static void AddHandlers(this IServiceCollection services)
     {
         services.AddScoped<ResourceOwnerPasswordTokenHandler>();
         services.AddScoped<ClientCredentialTokenHandler>();
     }
-
-    public static void AddConfigurations(this IServiceCollection services, IConfiguration config)
+    public static void AddServiceConfigurations(
+        this IServiceCollection services,
+        IConfiguration config
+    )
     {
         services.Configure<ServiceApiSettings>(config.GetSection("ServiceApiSettings"));
         services.Configure<ClientSettings>(config.GetSection("ClientSettings"));
@@ -62,5 +64,9 @@ public static class Extensions
                     optionts.Cookie.Name = "usercookie";
                 }
             );
+    }
+    public static void ConfigureServices(this IServiceCollection services)
+    {
+        services.AddScoped<ISharedIdentityService, SharedIndentityService>();
     }
 }
