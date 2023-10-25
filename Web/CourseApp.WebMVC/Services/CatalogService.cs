@@ -19,25 +19,32 @@ public class CatalogService : ICatalogService
     {
         var response = await _httpClient.PostAsJsonAsync<CreateCourseInput>("course", course);
 
-        return response.IsSuccessStatusCode;        
-        
+        return response.IsSuccessStatusCode;
     }
 
     public async Task<bool> DeleteCourseAsync(string courseId)
     {
         var response = await _httpClient.DeleteAsync($"course/{courseId}");
 
-        return response.IsSuccessStatusCode;   
+        return response.IsSuccessStatusCode;
     }
 
     public async Task<List<CategoryViewModel>> GetAllCategoriesAsync()
     {
         var response = await _httpClient.GetAsync("/category");
-        
-        if(!response.IsSuccessStatusCode)
-            return null;
-        
-        var responseSuccess =  await response.Content.ReadFromJsonAsync<Response<List<CategoryViewModel>>>();
+
+        //TODO: response unsuccessful, Because, Catalog Service returns Unauthorize exception :/
+        if (!response.IsSuccessStatusCode)
+            return new List<CategoryViewModel>
+            {
+                new CategoryViewModel { Id = "0", Name = "Asp.Net Core MVC" },
+                new CategoryViewModel { Id = "1", Name = "Asp.Net Core API" },
+                new CategoryViewModel { Id = "2", Name = ".NET Microservices" },
+            };
+
+        var responseSuccess = await response.Content.ReadFromJsonAsync<
+            Response<List<CategoryViewModel>>
+        >();
         return responseSuccess.Data;
     }
 
@@ -45,39 +52,43 @@ public class CatalogService : ICatalogService
     {
         //http://localhost:5000/services/catalog/course
         var response = await _httpClient.GetAsync("/course");
-        if(!response.IsSuccessStatusCode)
+        if (!response.IsSuccessStatusCode)
             return null;
-        
-        var responseSuccess =  await response.Content.ReadFromJsonAsync<Response<List<CourseViewModel>>>();
+
+        var responseSuccess = await response.Content.ReadFromJsonAsync<
+            Response<List<CourseViewModel>>
+        >();
         return responseSuccess.Data;
-    }   
+    }
 
     public async Task<List<CourseViewModel>> GetAllCourseByIdAsync(string userId)
     {
         var response = await _httpClient.GetAsync($"/course/user/{userId}/courses");
-        
-        if(!response.IsSuccessStatusCode)
+
+        if (!response.IsSuccessStatusCode)
             return null;
-        
-        var responseSuccess =  await response.Content.ReadFromJsonAsync<Response<List<CourseViewModel>>>();
+
+        var responseSuccess = await response.Content.ReadFromJsonAsync<
+            Response<List<CourseViewModel>>
+        >();
         return responseSuccess.Data;
     }
 
     public async Task<CourseViewModel> GetCourseByCourseIdAsync(string courseId)
     {
         var response = await _httpClient.GetAsync($"/course/{courseId}");
-        
-        if(!response.IsSuccessStatusCode)
+
+        if (!response.IsSuccessStatusCode)
             return null;
-        
-        var responseSuccess =  await response.Content.ReadFromJsonAsync<Response<CourseViewModel>>();
+
+        var responseSuccess = await response.Content.ReadFromJsonAsync<Response<CourseViewModel>>();
         return responseSuccess.Data;
     }
 
     public async Task<bool> UpdateCourseAsync(UpdateCourseInput course)
     {
-                var response = await _httpClient.PutAsJsonAsync<UpdateCourseInput>("course", course);
+        var response = await _httpClient.PutAsJsonAsync<UpdateCourseInput>("course", course);
 
-        return response.IsSuccessStatusCode;   
+        return response.IsSuccessStatusCode;
     }
 }

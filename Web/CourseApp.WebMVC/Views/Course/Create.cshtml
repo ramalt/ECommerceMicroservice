@@ -1,0 +1,62 @@
+@{
+    ViewData["Title"] = "Create New Course";
+}
+@model CreateCourseInput
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Yeni Kurs</h5>
+                <form asp-controller="course" asp-action="create" method="post" enctype="multipart/form-data">
+
+                    <div asp-validation-summary="ModelOnly"> </div>
+
+                    @* COURSE CATEGORY*@
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="CategoryId"></label>
+                        <select class="form-control" asp-items="@ViewBag.categoryList" asp-for="CategoryId">
+                            <option value="Kategori seçiniz"></option>
+                        </select>
+
+                        <span class="text-danger" asp-validation-for="CategoryId"></span>
+                    </div> 
+
+                    @* COURSE NAME *@
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="Name"></label>
+                        <input class="form-control" asp-for="Name">
+                        <span class="text-danger" asp-validation-for="Name"></span>
+                    </div>
+
+                    @* PRICE *@
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="Price"></label>
+                        <div class="input-group">
+                            <input type="text" class="form-control"
+                                aria-label="Dollar amount (with dot and two decimal places)" asp-for="Price">
+                            <span class="input-group-text">TL</span>
+                            <span class="input-group-text">0.00</span>
+                        </div>
+                        <span class="text-danger" asp-validation-for="Price"></span>
+                    </div>
+
+                    @* DESCRIPTION *@
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="Description"></label>
+                        <textarea class="form-control" rows="4" asp-for="Description"></textarea>
+                    </div>
+
+                    @* DURATION *@
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="Feature.Duration"></label>
+                        <input class="form-control" rows="4" asp-for="Feature.Duration" />
+                        <span class="text-danger" asp-validation-for="Feature.Duration"></span>
+                    </div>
+
+                       <button type="submit" class="btn btn-success">Kaydet</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
