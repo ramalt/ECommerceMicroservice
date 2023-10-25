@@ -1,3 +1,4 @@
+using CourseApp.Shared.services;
 using CourseApp.WebMVC.Handler;
 using CourseApp.WebMVC.Services;
 using CourseApp.WebMVC.Services.Interfaces;
@@ -22,6 +23,7 @@ builder.Services.AddHttpClient<ICatalogService, CatalogService>( opt => {
 });
 
 builder.Services.AddScoped<ResourceOwnerPasswordTokenHandler>();
+builder.Services.AddScoped<ISharedIdentityService, SharedIndentityService>();
 
 
 builder.Services.Configure<ServiceApiSettings>(builder.Configuration.GetSection("ServiceApiSettings"));

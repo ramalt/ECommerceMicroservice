@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace CourseApp.WebMVC.Models.Catalog;
 
 public class CourseViewModel
