@@ -34,11 +34,13 @@ public static class Extensions
 
         services.AddHttpClient<IClientCredentialTokenService, ClientCredentialTokenService>();
     }
+
     public static void AddHandlers(this IServiceCollection services)
     {
         services.AddScoped<ResourceOwnerPasswordTokenHandler>();
         services.AddScoped<ClientCredentialTokenHandler>();
     }
+
     public static void AddServiceConfigurations(
         this IServiceCollection services,
         IConfiguration config
@@ -66,6 +68,7 @@ public static class Extensions
                 }
             );
     }
+
     public static void ConfigureServices(this IServiceCollection services)
     {
         services.AddScoped<ISharedIdentityService, SharedIndentityService>();

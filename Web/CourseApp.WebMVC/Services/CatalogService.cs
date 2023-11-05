@@ -1,18 +1,20 @@
-using System.Net.Http.Json;
 using CourseApp.Shared.Dtos;
 using CourseApp.WebMVC.Models.Catalog;
 using CourseApp.WebMVC.Services.Interfaces;
-using CourseApp.WebMVC.Settings;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace CourseApp.WebMVC.Services;
 
 public class CatalogService : ICatalogService
 {
     private readonly HttpClient _httpClient;
+    private readonly ILogger<CatalogService> _logger;
 
-    public CatalogService(HttpClient httpClient)
+    public CatalogService(HttpClient httpClient, ILogger<CatalogService> logger)
     {
         _httpClient = httpClient;
+        _logger = logger;
     }
 
     public async Task<bool> CreateCourseAsync(CreateCourseInput course)
@@ -31,21 +33,31 @@ public class CatalogService : ICatalogService
 
     public async Task<List<CategoryViewModel>> GetAllCategoriesAsync()
     {
-        var response = await _httpClient.GetAsync("/category");
+        var response = await _httpClient.GetAsync("category");
+        List<CategoryViewModel> categoryList = new();
 
-        //TODO: response unsuccessful, Because, Catalog Service returns Unauthorize exception :/
         if (!response.IsSuccessStatusCode)
-            return new List<CategoryViewModel>
-            {
-                new CategoryViewModel { Id = "0", Name = "Asp.Net Core MVC" },
-                new CategoryViewModel { Id = "1", Name = "Asp.Net Core API" },
-                new CategoryViewModel { Id = "2", Name = ".NET Microservices" },
-            };
+        {
+            return categoryList;
+        }
 
-        var responseSuccess = await response.Content.ReadFromJsonAsync<
-            Response<List<CategoryViewModel>>
-        >();
-        return responseSuccess.Data;
+        string jsonResponse = await response.Content.ReadAsStringAsync();
+        var responseObject = JsonConvert.DeserializeObject<dynamic>(jsonResponse);
+        var dataToken = responseObject["data"];
+
+        if (dataToken is not null)
+        {
+            foreach (var item in dataToken)
+            {
+                CategoryViewModel category = new()
+                {
+                    Id = item["id"].ToString(),
+                    Name = item["name"].ToString()
+                };
+                categoryList.Add(category);
+            }
+        }
+        return categoryList;
     }
 
     public async Task<List<CourseViewModel>> GetAllCourseAsync()

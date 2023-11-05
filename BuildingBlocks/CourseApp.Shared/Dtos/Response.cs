@@ -10,7 +10,7 @@ namespace CourseApp.Shared.Dtos
         public int StatusCode { get; private set; }
         [JsonIgnore]
         public bool IsSuccesfull { get; private set; }
-        public List<string> Errors { get; private set; }
+        public List<string>? Errors { get; private set; }
 
         public static Response<T> Success(T data, int statusCode) => new Response<T> { Data = data, StatusCode = statusCode, IsSuccesfull = true };
         public static Response<T> Success(int statusCode) => new Response<T> { Data = default(T), StatusCode = statusCode, IsSuccesfull = true };
