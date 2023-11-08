@@ -14,25 +14,26 @@ public static class Extensions
     {
         var serviceApiSettings = config.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
 
+        services.AddHttpClient<IClientCredentialTokenService, ClientCredentialTokenService>();
+
+        // IDENTITY SERVER
         services.AddHttpClient<IIdentityService, IdentityService>();
 
-        services
-            .AddHttpClient<IUserService, UserService>(opt =>
-            {
-                opt.BaseAddress = new Uri(serviceApiSettings.IdentityBaseUri);
-            })
-            .AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+        // USER SERVICE
+        services.AddHttpClient<IUserService, UserService>(opt => {
+            opt.BaseAddress = new Uri(serviceApiSettings.IdentityBaseUri);
+        }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
-        services
-            .AddHttpClient<ICatalogService, CatalogService>(opt =>
-            {
-                opt.BaseAddress = new Uri(
-                    $"{serviceApiSettings.BaseUri}/{serviceApiSettings.CatalogService.Path}"
-                );
-            })
-            .AddHttpMessageHandler<ClientCredentialTokenHandler>();
+        // CATALOG SERVICE
+        services.AddHttpClient<ICatalogService, CatalogService>(opt => {
+            opt.BaseAddress = new Uri($"{serviceApiSettings.BaseUri}/{serviceApiSettings.CatalogService.Path}");
+        }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
-        services.AddHttpClient<IClientCredentialTokenService, ClientCredentialTokenService>();
+        // PHOTO SERVICE
+        services.AddHttpClient<IPhotoService, PhotoService>(opt => {
+            opt.BaseAddress = new Uri($"{serviceApiSettings.BaseUri}/{serviceApiSettings.PhotoService.Path}");
+        }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
     }
 
     public static void AddHandlers(this IServiceCollection services)

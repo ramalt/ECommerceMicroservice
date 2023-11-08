@@ -101,7 +101,7 @@
             }
         },
         {
-            "DownstreamPathTemplate": "/api/photos",
+            "DownstreamPathTemplate": "/api/photos/",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts":[
                 {
