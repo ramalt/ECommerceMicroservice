@@ -13,9 +13,10 @@ public class PhotoService : IPhotoService
         _client = client;
     }
 
-    public Task<bool> DeleteImage(string url)
+    public async Task<bool> DeleteImage(string url)
     {
-        throw new NotImplementedException();
+        var response = await _client.DeleteAsync($"photos?photoUrl={url}");
+        return response.IsSuccessStatusCode;
     }
 
     public async Task<PhotoViewModel> UploadImage(IFormFile image)
@@ -53,7 +54,6 @@ public class PhotoService : IPhotoService
         {
             viewModel.Url = dataToken["url"];
         }
-        Console.WriteLine($"--------------_____>{viewModel.Url}");
         return viewModel;
 
     }
