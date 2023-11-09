@@ -1,6 +1,7 @@
 using CourseApp.Shared.Dtos;
 using CourseApp.WebMVC.Models.Catalog;
 using CourseApp.WebMVC.Services.Interfaces;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -10,15 +11,22 @@ public class CatalogService : ICatalogService
 {
     private readonly HttpClient _httpClient;
     private readonly ILogger<CatalogService> _logger;
+    private readonly IPhotoService  _photoService;
 
-    public CatalogService(HttpClient httpClient, ILogger<CatalogService> logger)
+    public CatalogService(HttpClient httpClient, ILogger<CatalogService> logger, IPhotoService photoService)
     {
         _httpClient = httpClient;
         _logger = logger;
+        _photoService = photoService;
     }
 
     public async Task<bool> CreateCourseAsync(CreateCourseInput course)
     {
+        var resultPhotoService = await _photoService.UploadImage( course.PhotoFormFile);
+        if (resultPhotoService is not null)
+        {
+            course.Picture = resultPhotoService.Url;
+        }
         var response = await _httpClient.PostAsJsonAsync<CreateCourseInput>("course", course);
 
         return response.IsSuccessStatusCode;
